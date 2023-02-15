@@ -1,5 +1,5 @@
 <template>
-    <div class="cc-alert show" ref="ccAlert">
+    <div class="cc-alert show" :class="type" ref="ccAlert">
         <button type="button" class="close" ref="ccClose" @click="close">
             <i class="remove"></i>
         </button>
@@ -9,6 +9,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
 export default defineComponent({
     props: {
         title: {
@@ -22,6 +23,10 @@ export default defineComponent({
         timestamp:{
             type:Date,
             default:()=>new Date()
+        },
+        type:{
+            type:Object as PropType<'info' | 'error' | 'success' | 'warning'>,
+            default:"info"
         }
     },
     emits:['close'],
@@ -108,11 +113,6 @@ export default defineComponent({
     }
   }
   
-  .cc-alerts{
-    
-    position:fixed;
-    width:100%;
-  }
   @keyframes topfadeIn{
     0%{
       opacity:0;
@@ -122,5 +122,17 @@ export default defineComponent({
       opacity:1;
       transform:translateY(0px);
     }
+  }
+  .cc-alert.success {
+    background:#7ed6a5;
+  }
+  .cc-alert.success {
+    background:#7ed6a5;
+  }
+  .cc-alert.warning{
+    background:#fccf71;
+  }
+  .cc-alert.error{
+    background:#f1926e;
   }
 </style>
