@@ -38,7 +38,7 @@ export default defineComponent({
 
 </script>
 <style>
-.cc-alerts {
+.cc-notifys {
     position: fixed;
     width: 100%;
 }
