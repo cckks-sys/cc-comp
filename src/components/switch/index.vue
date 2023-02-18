@@ -1,29 +1,32 @@
 <template>
-    <input type="checkbox" :checked="checked" @change ="change" class="cc-input-switch" id="cc-switch"/>
+    <input type="checkbox" v-model="checked" @change ="change" class="cc-input-switch" id="cc-switch"/>
     <label class="cc-switch" for="cc-switch">
         <div class="circle">
         </div>
     </label>
-    {{ checked }}
 </template>
 <script lang="ts">
     import { defineComponent } from 'vue';
     export default defineComponent({
-        // data(){
-        //     return{
-        //         checked:true
-        //     }
-        // },
+        data(){
+            return{
+                checked:this.modelValue
+            }
+        },
         props:{
             checked:{
                 type:Boolean,
                 default:false
+            },
+            modelValue:{
+                type:Boolean,
+                default:false
             }
         },
-        emits:['change'],
+        emits:['change','update:modelValue'],
         methods:{
             change(event:any){
-                this.$emit('change',event)
+                this.$emit('update:modelValue',event.target.checked);
             }
         }
     })

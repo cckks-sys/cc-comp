@@ -1,6 +1,6 @@
 <template>
     <div class="cc-input">
-        <input type="input" :placeholder="placeholder" @input="input" :value="value" @change="change" @blur="blur"
+        <input type="input" :placeholder="placeholder" v-model="value" @change="change" @blur="blur"
             @focus="focus" />
     </div>
 </template>
@@ -8,20 +8,28 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-    emits: ['input', 'change', "blur", "focus"],
+    emits: ['change', "blur", "focus","update:modelValue"],
     props: {
         placeholder: {
             type: String,
             default: "please input"
         },
-        value: {
+        modelValue: {
             type: String
         }
     },
+    computed:{
+        value:{
+           
+            set(value:String){
+                this.$emit('update:modelValue',value);
+            },
+             get(){
+                return this.modelValue
+            }
+        }
+    },
     methods: {
-        input(event: any) {
-            this.$emit("input", event);
-        },
         change(event: any) {
             this.$emit('change', event);
         },
