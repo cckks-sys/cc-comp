@@ -5,41 +5,34 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import ccNotifyItem from './cc-notify-item.vue';
-export default defineComponent({
-    components: {
-        ccNotifyItem
-    },
-    data() {
-        return {
-            // notifys: [] as Array<NotifyType>
-                notifys:this.$ccNotify.state
-        }
-    },
-    methods: {
-        getNotify(notify: NotifyType) {
-            this.notifys.push(notify);
-        },
-        close(timestamp: Date) {
-            let index =  this.notifys.findIndex(e=>e.timestamp === timestamp);
-            this.notifys.splice(index,1);
-            // this.$ccNotify.removeNotification(timestamp);
-        }
-    },
-    mounted() {
-    },
-    unmounted() {
-
-    }
-})
-
-
-</script>
-<style>
-.cc-notifys {
-    position: fixed;
-    width: 100%;
+import { ref, inject, reactive, onMounted } from 'vue';
+import { notifyData, removeNotification } from './notify-data';
+import { watch } from 'vue';
+const notifys = notifyData;
+function close(timestamp: Date) {
+    removeNotification(timestamp);
 }
+</script>
+<style lang="scss">
+.cc-notifys {
+     position: fixed;
+     width: 100vw;
+     max-width: 33%;
+     padding: 0px 2px;
+     z-index: 100;
+     pointer-events: all;
+     left: 50%;
+     top:0px;
+     transform: translateX(-50%);
+     @media screen and (max-width:900px) {
+         max-width: 50%;
+     }
+
+     @media screen and (max-width:600px) {
+         max-width: 95%;
+
+     }
+ }
 </style>

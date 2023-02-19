@@ -50,7 +50,6 @@ export default defineComponent({
     padding-bottom:.9rem;
     position:relative;
     width:100%;
-    max-width:33.3%;  
     font-weight:400;
     line-height:1.5;
     text-align:center;
@@ -101,16 +100,6 @@ export default defineComponent({
   .show{
     opacity:1;
     display:block;
-  }
-  @media screen and (max-width:900px){
-    .cc-alert{
-      max-width: 50%;
-    }
-  }
-  @media screen and (max-width:600px){
-    .cc-alert{
-      max-width: 100%;
-    }
   }
   
   @keyframes topfadeIn{
