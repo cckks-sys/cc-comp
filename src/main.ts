@@ -7,6 +7,7 @@ import ccSwitch from "./components/switch/index.vue"
 import ccTable from "./components/table/index.vue";
 import ccCheckbox from "./components/checkbox/index.vue";
 import ccTooltips from './components/tooltips/index.vue'
+import ccTimeline from "./components/timeline/index.vue";
 const app = createApp(App);
 app.use(notifyPlugin);
 app.component("ccButton",ccButton);
@@ -15,4 +16,5 @@ app.component("ccSwitch",ccSwitch);
 app.component("ccTable",ccTable);
 app.component("ccCheckbox",ccCheckbox);
 app.component("ccTooltips",ccTooltips);
+app.component("ccTimeline",ccTimeline);
 app.mount('#app');
