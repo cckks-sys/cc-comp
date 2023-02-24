@@ -1,14 +1,15 @@
 <template>
-    <button :class="['cc-button', type, size, , { round: round }, { isDisabled: isDisabled }]">
+    <button :class="['cc-button', type, size, , { round: round }, { isDisabled: isDisabled }]" @click="click">
         <span>
             <slot></slot>
         </span>
     </button>
 </template>
-<script lang="ts">
+<script lang="ts" >
 import { defineComponent } from 'vue';
 import type { PropType } from 'vue';
 export default defineComponent({
+    emits: ["click"],
     props: {
         type: {
             type: Object as PropType<'danger' | 'success' | 'warning' | 'primary'>,
@@ -28,6 +29,11 @@ export default defineComponent({
             required: false,
             default: false
         }
+    },
+    methods: {
+        click(event: Event) {
+            this.$emit('click', event)
+        }
     }
 });
 </script>
@@ -42,6 +48,7 @@ $small-round: calc($small-height / 2);
 $large-min-width: 70px;
 $large-height: 40px;
 $large-round: calc($large-height / 2);
+
 // }
 .cc-button {
     border-radius: 3px;
@@ -95,15 +102,18 @@ $large-round: calc($large-height / 2);
         height: $small-height;
         min-width: $small-min-width;
         font-size: 12px;
+
         &.round {
             border-radius: $small-round;
         }
     }
+
     &.large {
         height: $large-height;
         min-width: $large-min-width;
         font-size: 14px;
         padding: 0px 12px;
+
         &.round {
             border-radius: $large-round;
         }

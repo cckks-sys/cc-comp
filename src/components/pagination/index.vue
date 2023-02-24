@@ -78,7 +78,7 @@ const currentShow = computed(() => {
         array.push(i);
     }
     return array;
-})// reactive([] as Array<number>);
+})
 function currentChange(n: number) {
     pagination.current = n;
      emits('currentChange',n);
