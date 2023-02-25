@@ -9,7 +9,9 @@ import ccLoader from './loader/index.vue'
 import ccPagination from './pagination/index.vue';
 import ccFullScreenLoad from './loader/fullScreenLoad.vue'
 import ccCollapsible from './collapsible/index.vue'
+import circularProgressBar from './circularProgressBar/index.vue';
 export {notifyPlugin} from './notify/notify-data';
+import rectangleProgressBar from './rectangleProgressBar/index.vue';
 import type { App } from "vue";
 export default {
     install(app:App){
@@ -24,5 +26,7 @@ export default {
         app.component("ccPagination",ccPagination);
         app.component('ccFullScreenLoad',ccFullScreenLoad);
         app.component('ccCollapsible',ccCollapsible);
+        app.component('circularProgressBar',circularProgressBar);
+        app.component('rectangleProgressBar',rectangleProgressBar);
     }
 }

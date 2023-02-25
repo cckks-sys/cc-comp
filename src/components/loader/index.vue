@@ -1,7 +1,7 @@
 <template>
     <div class="loader"></div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 $loader-size: 45px;
 
 .loader {
@@ -10,8 +10,6 @@ $loader-size: 45px;
     height: $loader-size;
     box-sizing: border-box;
     border: 6px solid #BDBDBD;
-    // border: 6px solid #fff;
-    // border-top: 6px solid #607D8B;
     border-top: 6px solid #03A9F4;
     border-radius: 50%;
     animation: rollani 1.2s linear infinite;
