@@ -8,6 +8,10 @@ import ccTimeline from "./components/timeline/index.vue";
 import ccLoader from './components/loader/index.vue'
 import type { App } from "vue";
 import ccPagination from './components/pagination/index.vue';
+import ccFullScreenLoad from './components/loader/fullScreenLoad.vue';
+import ccCollapsible from './components/collapsible/index.vue'
+import circularProgressBar from './components/circularProgressBar/index.vue';
+import rectangleProgressBar from './components/rectangleProgressBar/index.vue';
 export default {
     install(app:App){
         app.component("ccButton",ccButton);
@@ -19,5 +23,9 @@ export default {
         app.component("ccTimeline",ccTimeline);
         app.component("ccLoader",ccLoader);
         app.component("ccPagination",ccPagination);
+        app.component('ccFullScreenLoad',ccFullScreenLoad);
+        app.component('ccCollapsible',ccCollapsible);
+        app.component('circularProgressBar',circularProgressBar);
+        app.component('rectangleProgressBar',rectangleProgressBar);
     }
 }

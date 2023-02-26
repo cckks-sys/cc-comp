@@ -16,39 +16,39 @@ const props = defineProps({
     },
     percent: {
         type: Number,
-        default: 50
+        default: 0
     },
     content: {
         type: String,
-        default: "43132"
+        default: ""
     },
-    strokeWitdh:{
+    strokeWidth:{
         type:Number,
         default:8
     }
 })
 const r = ref(props.r); // 半径
-const strokeWitdh = ref(props.strokeWitdh); // 边框宽度
+const strokeWidth = ref(props.strokeWidth); // 边框宽度
 const allRoll = computed(() => 2 * 3.14 * r.value); // 总周长
 const percent = ref(props.percent); // 百分比
 const precentRoll = computed(() => percent.value / 100 * allRoll.value); // 百分比所占用的长度
 // 下面样式改变大小和尺寸
 const svg = reactive({
-    width: (strokeWitdh.value + 2 * r.value) + 'px',
-    height: (strokeWitdh.value + 2 * r.value) + 'px'
+    width: (strokeWidth.value + 2 * r.value) + 'px',
+    height: (strokeWidth.value + 2 * r.value) + 'px'
 })
 const bg = reactive({
     r: r.value,
-    cx: strokeWitdh.value / 2 + r.value + 'px',
-    cy: strokeWitdh.value / 2 + r.value + 'px',
-    strokeWitdh: strokeWitdh.value
+    cx: strokeWidth.value / 2 + r.value + 'px',
+    cy: strokeWidth.value / 2 + r.value + 'px',
+    strokeWidth: strokeWidth.value
 });
 const circle = reactive({
     r: r.value,
-    cx: strokeWitdh.value / 2 + r.value + 'px',
-    cy: strokeWitdh.value / 2 + r.value + 'px',
-    transformOrigin: strokeWitdh.value / 2 + r.value + 'px',
-    strokeWitdh: strokeWitdh.value,
+    cx: strokeWidth.value / 2 + r.value + 'px',
+    cy: strokeWidth.value / 2 + r.value + 'px',
+    transformOrigin: strokeWidth.value / 2 + r.value + 'px',
+    strokeWidth: strokeWidth.value,
     strokeDasharray: allRoll.value + 'px',
     strokeDashoffset: allRoll.value - precentRoll.value + 'px'
 });
